@@ -1,0 +1,10 @@
+
+.DS_Store
+*.zip
+.venv
+ __pycache__/
+ *.pyc
+.vscode
+model/
+logs/
+README_DRAFT.md
