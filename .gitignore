@@ -5,6 +5,7 @@
  __pycache__/
  *.pyc
 .vscode
-model/
 logs/
 README_DRAFT.md
+.aws-sam/
+samconfig.toml

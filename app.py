@@ -28,9 +28,10 @@ model.fc = nn.Sequential(
 model.load_state_dict(torch.load('model/model.pth'))
 model.eval()
 
-objects_category = ['01-beer-mug','02-coffee-mug','03-teapot','04-wine-bottle']
+objects_category = ['beer-mug','coffee-mug','teapot','wine-bottle']
 
 def lambda_handler(event, context):
+    print(event)
     url = event['queryStringParameters']['url']
     
     img = Image.open(urllib.request.urlopen(url))
@@ -42,4 +43,10 @@ def lambda_handler(event, context):
             output = torch.exp(predict)
             index = np.argmax(output)
 
-    print("Result --> label: " + objects_category[index] + " | probability: " + str(output[0][index]))
+    return {
+        'statusCode': 200,
+        'body': json.dumps({
+            "Label": objects_category[index],
+            "Probability": str(output[0][index])
+        })
+    }
