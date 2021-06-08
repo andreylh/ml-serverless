@@ -40,9 +40,9 @@ fi
 
 Create a Role with admin privileges and add it to Cloud9 environment.
 
-Disable *AWS managed temporary credentials* option on Cloud9 env.
+Disable **AWS managed temporary credentials** option on Cloud9 env.
 
-Check env is using new role:
+Check if environment is using new created role:
 
 ```
 aws sts get-caller-identity
